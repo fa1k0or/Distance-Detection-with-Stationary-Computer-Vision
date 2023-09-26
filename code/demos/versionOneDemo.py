@@ -116,53 +116,6 @@ remarks: don't know if it works or not. bad at math(s)
 
 #distance = L * (a / (P-b) -c)
 
-def loss_function(a,b,c,L,points):
-    total_error = 0
-
-    for i in range(len(points)):
-        x = points.iloc[i].x
-        y = points.iloc[i].y
-        total_error += (y - (L*a/(x-b)-c)**2)
-
-    return total_error/float(len(points))
-
-def gradient_descent(a_now, b_now,c_now, L, points, learningrate):
-    a_gradinet = 0
-    b_gradient = 0
-    c_gradient = 0
-    N= len(points)#number of training examples
-
-    for i in range(N):
-        x = points.iloc[i].x
-        y = points.iloc[i].y
-
-        a_gradinet += -(2/N) * (y - (L*a_now/(x-b_now)-c_now)) / (x-b_now)
-        b_gradinet += -(2/N) * a_now / ( (y - (L*a_now/(x-b_now)-c_now)) - b_now )
-        c_gradient += -(2/N) * (y - (L*a_now/(x-b_now)-c_now))
-
-    a = a_now - a_gradinet * learningrate
-    b = b_now - b_gradient * learningrate
-    c = c_now - c_gradient * learningrate
-
-    return a,b,c
-
-EPOCHS = 1000
-
-def calcRegression(R):
-
-    plotRange = (20,
-                 80
-                )
-    data = pd.read_csv('data.csv')
-
-    for i in range(EPOCHS):
-        a,b,c = gradient_descent(a,b,c,L,data,0.001)
-
-    print(a,b,c)
-
-    plt.scatter(data.x,data.y, color = 'black')
-    plt.plot(list(range(plotRange[0],plotRange[1])),[L*a/(x-b)-c for x in range(plotRange[0],plotRange[1])],color = 'blue')
-
 
 """
 Func: calcDis 
@@ -262,15 +215,16 @@ def main():
     CAM1 = cv2.VideoCapture(0)
     CAM1.set(cv2.CAP_PROP_FOURCC,cv2.VideoWriter_fourcc('M','J','P','G'))
     CAM2 = cv2.VideoCapture(2)
-    CAM2.set(cv2.CAP_PROP_FOURCC,cv2.VideoWriter_fourcc('M','J','P','G'))   
+    CAM2.set(cv2.CAP_PROP_FOURCC,cv2.VideoWriter_fourcc('M','J','P','G'))
     #wait a while
     cv2.waitKey(1000)
 
     print('starting')
  
     if CAM1.isOpened():
+        print('One Camera Open')
         if CAM2.isOpened():
-            print("Camera Open!")
+            print("Cameras Open!")
 
             while True:
 

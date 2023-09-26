@@ -5,7 +5,7 @@ from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
 
 # initialize object detection
-base_options = python.BaseOptions(model_asset_path='efficientdet_lite0.tflite') #this is the model file change file name if nesscary
+base_options = python.BaseOptions(model_asset_path='assets/efficientdet_lite0.tflite') #this is the model file change file name if nesscary
 options = vision.ObjectDetectorOptions(base_options=base_options,
                                        score_threshold=0.5) #score threshold shows 
 detector = vision.ObjectDetector.create_from_options(options)
@@ -39,41 +39,6 @@ def visualizeObject(image,detection_result) -> np.ndarray:
 
 
 """
-def ObjProperties(detection_result) -> np.ndarray:
-    properties = []
-
-    for detection in detection_result.detections:
-
-        #get object box dimensions and origin
-        bbox = detection.bounding_box
-        width = bbox.width
-        height = bbox.height
-        origin = (bbox.origin_x, bbox.origin_y)
-
-        #get object category name and accuracy probability
-        category = detection.categories[0]
-        item = category.category_name
-        score = category.score
-
-        properties.append({'item':item,'score':score ,'width':int(width),'height':int(height),'origin':origin})
-
-    return properties
-"""
-
-
-"""
-def cleanSuitcaseData(raw):
-    #print(raw)
-    for i in raw:
-        if i['item'] == 'suitcase':
-            return int(i['width']),int(i['origin'][0])
-        
-    return 'NA','NA'
-
-"""
-
-
-"""
 if __name__ == '__main__':
 
     cap=cv2.VideoCapture(0)#get camera
@@ -85,7 +50,6 @@ if __name__ == '__main__':
         image = mp.Image.create_from_file("frame.jpg")
 
         detection_result = detector.detect(image)
-        print(ObjProperties(detection_result))
 
         image_copy = np.copy(image.numpy_view())
         annotated_image,text = visualizeObject(image_copy, detection_result)
