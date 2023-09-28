@@ -1,21 +1,23 @@
 """
 Name: TwoCamDis 
 Author: Jayden Chen
-Purpose: Get the distance of a person from Two Cameras
-
-input: 
-    hand_landmarks from mediapipe hands * 2
-
-output: 
-    distance in meters
+Purpose: 
+    Get the distance of an object from Two Cameras
 
 """
 
 import numpy as np
 
-
 """
+Func: calcDis 
+Author: Jayden Chen
+Purpose: calculates the distance based on the equation: 
 
+input: results from object detection
+    
+output:  width, orgin x of suitcase
+
+remarks:
 
 """
 def ObjProperties(detection_result) -> np.ndarray:
@@ -50,13 +52,22 @@ output:  width, orgin x of suitcase
 remarks:
 
 """
-def cleanSuitcaseData(raw):
-    #print(raw)
-    for i in raw:
-        if i['item'] == 'suitcase' or i['item'] == 'refrigerator' or i['item'] == 'backpack':
-            return int(i['width']),int(i['origin'][0])
+def plantProperties(detection_result) -> np.ndarray:
         
-    return None,None
+    for detection in detection_result.detections:
+
+        #get object box dimensions and origin
+        bbox = detection.bounding_box
+        width = bbox.width
+        originX = bbox.origin_x
+
+        #get object category name and accuracy probability
+        category = detection.categories[0]
+        item = category.category_name
+        if 'plant' in str(item):
+            return width, originX
+    
+    return None , None
 
 #test data 
 #1m: 2.04 1.93 1.92 avg1.95
@@ -110,16 +121,13 @@ output: distance in meters, distance in Ls, distance in
 remarks: 
     
 """
-def twocamdis(results1,results2):
+def twoCamDis(results1,results2):
 
-    results1 = ObjProperties(results1)
-    results2 = ObjProperties(results2)
+    P1,X1 = plantProperties(results1)
+    P2,X2 = plantProperties(results2)
 
-    P1,X1 = cleanSuitcaseData(results1)
-    P2,X2 = cleanSuitcaseData(results2)
-
-    if P1 != 'NA':
-        if P2 != 'NA':
+    if P1 != None:
+        if P2 != None:
             #if raw2['item'] == 'suitcase':
             P = P1/P2
             distanceZMeters, distanceLMeters = calcDis(P)

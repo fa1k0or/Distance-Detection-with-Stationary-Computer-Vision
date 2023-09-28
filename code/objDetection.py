@@ -1,3 +1,12 @@
+"""
+Name: objDetection
+Author: Jayden Chen
+Purpose: 
+    Initialize object detection
+    Import model
+    Visualize the results for object detection
+"""
+
 import cv2
 import numpy as np
 import mediapipe as mp
@@ -26,10 +35,7 @@ def visualizeObject(image,detection_result) -> np.ndarray:
         category = detection.categories[0]
         category_name = category.category_name
         probability = round(category.score, 2)
-        if category_name == 'person':
-            result_text = 'food' + ' (' + str(probability) + ')'
-        else:
-            result_text = category_name + ' (' + str(probability) + ')'
+        result_text = category_name + ' (' + str(probability) + ')'
         text_location = (0 + bbox.origin_x,0 + 0 + bbox.origin_y)
         cv2.putText(image, result_text, text_location, cv2.FONT_HERSHEY_PLAIN,1, (0,0,255), 2)
 
@@ -45,9 +51,9 @@ if __name__ == '__main__':
 
     while (True):
         ret,frame=cap.read()
-        cv2.imwrite("frame.jpg",frame)
+        cv2.imwrite("temp/frame.jpg",frame)
         #cv2.imshow("a",frame)
-        image = mp.Image.create_from_file("frame.jpg")
+        image = mp.Image.create_from_file("temp/frame.jpg")
 
         detection_result = detector.detect(image)
 
@@ -58,4 +64,3 @@ if __name__ == '__main__':
         if cv2.waitKey(50) == 27:
             break
     cv2.destroyAllWindows()
-
