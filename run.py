@@ -24,7 +24,7 @@ options = vision.ObjectDetectorOptions(base_options=base_options,
 detector = vision.ObjectDetector.create_from_options(options)
 
 def deleteTempFiles():
-    subdirectories = ['temp//','code/__pycache__//']
+    subdirectories = ['temp//','code//__pycache__//']
     for subdir in subdirectories:
         dir_list = os.listdir(subdir)
         #print(dir_list)
@@ -75,11 +75,9 @@ def main():
                     image1 = np.copy(frame1.numpy_view())
                     annotated_image1,text1 = obj.visualizeObject(image1, results1)
                     rgb_annotated_image = cv2.cvtColor(annotated_image1, cv2.COLOR_BGR2RGB)
-                    cv2.imshow("image1",rgb_annotated_image)
                     image2 = np.copy(frame2.numpy_view())
                     annotated_image2,text2 = obj.visualizeObject(image2, results2)
                     rgb_annotated_image = cv2.cvtColor(annotated_image2, cv2.COLOR_BGR2RGB)
-                    cv2.imshow("image2",rgb_annotated_image)
 
                 else:
                     print('Frames are not found')
@@ -90,8 +88,6 @@ def main():
     CAM1.release()
     CAM2.release()
     cv2.destroyAllWindows
-    deleteTempFiles()
-
 
 if __name__ == '__main__':
     deleteTempFiles()
