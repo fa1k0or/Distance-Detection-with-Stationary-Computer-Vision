@@ -70,7 +70,7 @@ def main():
 
                     distanceInLs, distanceInMeters, distanceHorizontal = twoCamDis(results1)
                     distanceInLs, distanceInMeters, distanceHorizontal = twoCamDis(results2)
-                        
+                    
                     #show frames
                     image1 = np.copy(frame1.numpy_view())
                     annotated_image1,text1 = obj.visualizeObject(image1, results1)
@@ -85,11 +85,10 @@ def main():
                 #if esc is pressed, break
                 if cv2.waitKey(60) == 27:
                     break
+
     CAM1.release()
     CAM2.release()
     cv2.destroyAllWindows
 
 if __name__ == '__main__':
-    deleteTempFiles()
-    main()
     deleteTempFiles()

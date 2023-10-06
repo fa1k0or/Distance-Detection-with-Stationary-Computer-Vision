@@ -20,7 +20,7 @@ output:  width, orgin x of suitcase
 remarks:
 
 """
-def ObjProperties(detection_result) -> np.ndarray:
+def objProperties(detection_result) -> np.ndarray:
     properties = []
 
     for detection in detection_result.detections:
@@ -67,7 +67,7 @@ def plantProperties(detection_result) -> np.ndarray:
         if 'plant' in str(item):
             return width, originX
     
-    return None , None
+    return None, None
 
 #test data 
 #1m: 2.04 1.93 1.92 avg1.95
@@ -118,7 +118,7 @@ input: results1, results2 from object detection
     
 output: distance in meters, distance in Ls, distance in 
 
-remarks: 
+remarks: this version is different because it only considers one target instead of multiple
     
 """
 def twoCamDis(results1,results2):
