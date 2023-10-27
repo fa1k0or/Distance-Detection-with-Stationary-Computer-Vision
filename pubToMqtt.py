@@ -27,5 +27,6 @@ while True:
         print(msg)
         print()
         result = client.publish(topic, msg)
+        time.sleep(10)
     time.sleep(0.05)
     #print(result) #this result is kind of useless, it doesn't provide a lot of useful info
