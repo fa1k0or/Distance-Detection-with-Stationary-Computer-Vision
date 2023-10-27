@@ -24,12 +24,6 @@ def visualize(image,detection_result) -> np.ndarray:
 
     return image,category_name
 
-def getDimensions(detection_result) -> np.ndarray:
-
-    for detection in detection_result.detections:
-        bbox = detection.bounding_box
-        
-
 base_options = python.BaseOptions(model_asset_path='efficientdet_lite0.tflite')
 options = vision.ObjectDetectorOptions(base_options=base_options,
                                        score_threshold=0.5)
