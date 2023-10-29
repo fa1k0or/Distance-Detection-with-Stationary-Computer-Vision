@@ -112,12 +112,12 @@ remarks:
 
 """
 def calcDis(P):
-    #P = b + a/(x*d + c)
-    #x*d = a / (P-b) -c
+    #P = b + a/(D + c)
+    #x = D / (P-b) -c
 
     slopeMap = {1.95:(1,0.8),1.75:(1.25,0.6),1.6:(1.5,0.2),1.55:(1.75,0.4)}
 
-    return round(((a/(P-b) + c)),4),round(((a/(P-b) + c)*L),4)
+    return round(((a/(P-b))),4),round(((a/(P-b))*L),4)
     
     #position = 1.95 #don't need to draw secant liness
     #return (P-position)*(-slopeMap[position][1]) + slopeMap[position][0]
