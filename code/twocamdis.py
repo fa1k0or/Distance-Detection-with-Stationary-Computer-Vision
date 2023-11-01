@@ -95,9 +95,6 @@ def plantProperties(detection_result) -> np.ndarray:
 #values for distance formula
 with open('code/twoCamDisVariables.varfx','r') as fin:
     L = float(fin.readline().split()[1])
-    a = float(fin.readline().split()[1])
-    b = float(fin.readline().split()[1])
-    c = float(fin.readline().split()[1])
 
 """
 Func: calcDis 
@@ -112,12 +109,10 @@ remarks:
 
 """
 def calcDis(P):
-    #P = b + a/(D + c)
-    #x = D / (P-b) -c
 
     slopeMap = {1.95:(1,0.8),1.75:(1.25,0.6),1.6:(1.5,0.2),1.55:(1.75,0.4)}
 
-    return round(((a/(P-b))),4),round(((a/(P-b))*L),4)
+    return round(((1/(P-1))),4),round(((1/(P-1))/L),4)
     
     #position = 1.95 #don't need to draw secant liness
     #return (P-position)*(-slopeMap[position][1]) + slopeMap[position][0]
@@ -152,7 +147,7 @@ def twoCamDis(results1,results2):
         
 if __name__ == '__main__':
 
-    print(L,a,b,c)
+    print(L)
     print(calcDis(1.5))
     """
     #initialize camera

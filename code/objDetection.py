@@ -30,6 +30,7 @@ def visualizeObject(image,detection_result) -> np.ndarray:
         bbox = detection.bounding_box
         start_point = bbox.origin_x, bbox.origin_y
         end_point = bbox.origin_x + bbox.width, bbox.origin_y + bbox.height
+        print(bbox)
         cv2.rectangle(image, start_point, end_point, (0,255,0), 3)
        
         category = detection.categories[0]
