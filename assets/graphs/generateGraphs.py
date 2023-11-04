@@ -39,6 +39,12 @@ def intialTest():
     fig.savefig("graph4.png")
     plt.show()
 
+def intialTestTable():
+    print()
+
+def secondTestTable():
+    print()
+
 
 if __name__ == '__main__':
     intialTest()

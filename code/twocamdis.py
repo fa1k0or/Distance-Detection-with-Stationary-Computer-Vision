@@ -82,13 +82,6 @@ def plantProperties(detection_result) -> np.ndarray:
     
     return None, None
 
-#test data 
-#1m: 2.04 1.93 1.92 avg1.95
-#1.25m: 1.82 1.86 avg1.85
-#1.5m: 1.65 1.65, 1.68, 1.5 avg1.65
-#1.75m: 1.5 1.51 1.41 avg1.5
-#2m: 1.35 1.39 avg1.35
-
 #P = b + a/(x + c)
 #distance = L * (a / (P-b) -c)
 
