@@ -1,8 +1,6 @@
 import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 import numpy as np
-import matplotlib.patches as patches
-
 
 def f(x):
     return 1 + 1/(x)
@@ -39,12 +37,54 @@ def intialTest():
     fig.savefig("graph4.png")
     plt.show()
 
+    
+
 def intialTestTable():
-    print()
+    # average marks data for 5 consecutive years 
+    data = [[1.98,1.87,2.23,2.02,0.98],
+            [1.53,1.68,1.32,1.56,1.79],
+            [1.25,1.36,1.28,1.30,3.33],
+            [1.31,1.16,1.26,1.24,4.17]]
+  
+    columns = ('P1:P2 of Trial One', 'P1:P2 of Trial Two', 'P1:P2 of Trial Three', 
+           'Average P1:P2', 'Distance Calculated (L)') 
+    rows = ['%d L from Camera One' % x for x in (1, 2, 3, 4)] 
+  
+    colors = plt.cm.BuPu(np.linspace(0, 0.5, len(rows))) 
+    index = np.arange(len(columns)) + 0.3
+    bar_width = 0.4
+    n_rows = len(data)
+  
+    # Initialize the vertical-offset for 
+    # the line plots. 
+    y_offset = np.zeros(len(columns)) 
+  
+    cell_text = [] 
+    for row in range(n_rows): 
+        y_offset = data[row] 
+        cell_text.append([x for x in y_offset]) 
+  
+    # Reverse colors and text labels to display 
+    # the last value at the top. 
+    colors = colors[::-1] 
+    cell_text.reverse() 
+  
+    # Add a table at the bottom of the axes 
+    the_table = plt.table(cellText=cell_text, 
+                      rowLabels=rows, 
+                      rowColours=colors, 
+                      colLabels=columns, 
+                      loc='top') 
+  
+    #plt.ylabel("marks".format(value_increment)) 
+    #plt.xticks([]) 
+    plt.title('average marks in each consecutive year') 
+  
+    plt.show() 
 
 def secondTestTable():
     print()
 
 
 if __name__ == '__main__':
-    intialTest()
+    intialTestTable()
