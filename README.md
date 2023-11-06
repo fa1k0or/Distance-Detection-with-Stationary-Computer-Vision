@@ -6,21 +6,34 @@ With more advancements in robotics, efficient communication through computer vis
 
 ### KEYWORDS
 
-Computer Vision, Machine Vision, Object Detection, Gesture Detection, Mediapipe, Camera Technolgy, MQTT, Robotics, ROS2, Autonomous Vehicles 
+Machine Vision, Distance Ranging, Object Detection, Smart Infrastructure, Mediapipe, MQTT
 
-## QUICK STARTUP
+## INSTALLATION
 
-Download this repository https://github.com/fa1k0or/Distance-Detection-with-Stationary-Computer-Vision 
+    # clone the repo
+    $ git clone https://github.com/sherlock-project/sherlock.git
 
-And download all required packages in requirements.txt
+    # change the working directory to sherlock
+    $ cd sherlock
 
-And then execute run.py, 
+    # install the requirements
+    $ python3 -m pip install -r requirements.txt
 
-and execute pubToMqtt.py for MQTT and visual.py for visualization.
+## USAGE
 
-## ACKNOWLEDGEMENTS
+    # starting camera feed, mediapipe, and distance
+    python run.py
+
+    # publish results to mqtt
+    python pub.py
+
+    # starting visuals
+    python vsl.py
+
+### ACKNOWLEDGEMENTS
 
 See the pdf for more infomation.
 
-Below are some mind maps of code and hardware.
+![Hardware Mind Map](/assets/images/readmeImages/HardwareSetup.png "hardware")
 
+![Software Mind Map](/assets/images/readmeImages/figureSevenButDetailed2.png "software")
