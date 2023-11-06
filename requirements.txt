@@ -1,0 +1,6 @@
+pandas>=1.0.0
+mediapipe>=0.10.1
+matplotlib>=3.7.1
+opencv-python>=4.7.0.72
+numpy>=1.24.3
+paho-mqtt>=1.6.1

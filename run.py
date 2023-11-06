@@ -59,7 +59,7 @@ def main():
 
                 if read_code1 and read_code2:
 
-                    print('Frame is found, proceding')
+                    #print('Frame is found, proceding')
 
                     #save image for formatting
                     cv2.imwrite("temp//frame1.jpg",frame1)
@@ -96,8 +96,8 @@ def main():
                         else:
                             fout.write('None')
 
-                else:
-                    print('Frames are not found')
+                #else:
+                    #print('Frames are not found')
 
                 #userInterfaceShow(distanceInLs, distanceInMeters, distanceHorizontal)
                 #if esc is pressed, break

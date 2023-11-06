@@ -32,8 +32,12 @@ Machine Vision, Distance Ranging, Object Detection, Smart Infrastructure, Mediap
 
 ### ACKNOWLEDGEMENTS
 
-See the pdf for more infomation.
+This project has only been tested on Python 3.8.
+
+See the pdf for more infomation on the project.
 
 ![Hardware Mind Map](/assets/images/readmeImages/HardwareSetup.png "hardware")
+
+
 
 ![Software Mind Map](/assets/images/readmeImages/figureSevenButDetailed2.png "software")
