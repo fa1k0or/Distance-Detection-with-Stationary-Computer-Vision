@@ -75,7 +75,7 @@ def main():
                     #print('getting results')
 
                     distanceInLs, distanceInMeters, distanceHorizontal = twoCamDis(results1,results2) #this gives us the distance, look for 
-                    #print(distanceInLs, distanceInMeters, distanceHorizontal) #print for debug
+                    print(distanceInLs, distanceInMeters, distanceHorizontal) #print for debug
                     
                     #export annotated images to temp so that another 
                     image1 = np.copy(frame1.numpy_view())
@@ -92,7 +92,8 @@ def main():
                     #export the distance to a temp file so that anyother parrallel program can deal with it
                     with open('temp//distance.output', 'w') as fout:
                         if distanceInLs != None:
-                            fout.write(f"{distanceInMeters},{distanceHorizontal}")
+                            fout.write(f"{distanceInMeters},0\n")
+                            fout.write(f"{distanceInLs}")
                         else:
                             fout.write('None')
 

@@ -11,10 +11,10 @@ Machine Vision, Distance Ranging, Object Detection, Smart Infrastructure, Mediap
 ## INSTALLATION
 
     # clone the repo
-    $ git clone https://github.com/sherlock-project/sherlock.git
+    $ git clone https://github.com/fa1k0or/Distance-Detection-with-Stationary-Computer-Vision
 
-    # change the working directory to sherlock
-    $ cd sherlock
+    # change the working directory to this
+    $ cd Distance-Detection-with-Stationary-Computer-Vision
 
     # install the requirements
     $ python3 -m pip install -r requirements.txt
